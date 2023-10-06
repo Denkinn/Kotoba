@@ -1,28 +1,20 @@
 package application.kotoba.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import jakarta.persistence.*;
 
 @Setter
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name="roles")
-public class Role
-{
+@Table(name = "roles")
+public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    @Column(nullable=false, unique=true)
+    @Column(length = 60)
     private String name;
-
-    @ManyToMany(mappedBy="roles")
-    private List<User> users;
 }
