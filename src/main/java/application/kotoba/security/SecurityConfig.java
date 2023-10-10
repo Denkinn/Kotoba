@@ -1,4 +1,4 @@
-package application.kotoba;
+package application.kotoba.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,9 +40,17 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+//        http.csrf().disable()
+//                .authorizeHttpRequests((authorize) ->
+//                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+//                                .requestMatchers("/api/auth/**").permitAll()
+//                                .anyRequest().authenticated()
+//
+//                );
+
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll()
+                        authorize.requestMatchers("/api/**").permitAll()
                                 .requestMatchers("/api/auth/**").permitAll()
                                 .anyRequest().authenticated()
 
